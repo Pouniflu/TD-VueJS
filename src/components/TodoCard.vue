@@ -1,6 +1,7 @@
 <script>
 import NewTodo from './NewTodo.vue'
 import TodoList from './TodoList.vue'
+import { mapGetters } from 'vuex'
 
 export default {
     name: 'todo-card',
@@ -14,16 +15,7 @@ export default {
         TodoList
     },
     computed: {
-        date: function() {
-            const days = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"];
-            const months = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"];
-            const classDate=new Date();
-            const number = classDate.getDate();
-            const day = days[number-1];
-            const month = months[classDate.getMonth()];
-            const date = day + " " + number + " " + month;
-            return date
-        }
+        ...mapGetters(['date'])
     },
     methods: {
         addTask(task) {
